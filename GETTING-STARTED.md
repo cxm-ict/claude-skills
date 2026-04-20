@@ -1,84 +1,27 @@
 # Getting Started
 
-This guide walks you through installing Claude Code and running your first skill.
+This guide explains how to install and run skills depending on which Claude product you use.
+
+There are three ways to use these skills:
+
+- **Claude.ai or Claude Desktop** for the VA-light skill (no technical knowledge needed)
+- **Claude Code** for the Website Builder skill (requires a terminal)
 
 ---
 
-## What you need
+## Option A: Claude.ai or Claude Desktop (VA-light)
 
-- A Claude Pro or Max subscription at [claude.ai](https://claude.ai)
-- A computer with a terminal (Mac, Windows, or Linux)
-- Node.js installed (version 18 or higher)
+This is the easiest route. No terminal. No technical setup.
 
-Not sure if you have Node.js? Open your terminal and type:
+**Step 1: Download the skill**
 
-```
-node --version
-```
+Go to the [VA-light skill file](va-light/SKILL.md) in this repository.
 
-If you see a version number, you are good. If not, download Node.js at [nodejs.org](https://nodejs.org) and install it first.
+Click the download button in the top right (looks like an arrow pointing down) or copy the raw content and paste it into a text file. Save it as `SKILL.md`.
 
----
+**Step 2: Fill in your details**
 
-## Step 1: Install Claude Code
-
-Open your terminal and run:
-
-```
-npm install -g @anthropic-ai/claude-code
-```
-
-Then log in with your Anthropic account:
-
-```
-claude login
-```
-
-This opens a browser window. Sign in with the same account you use on claude.ai.
-
----
-
-## Step 2: Download a skill
-
-Go to the skill you want to use in this repository and click the file name to open it.
-
-Then click the download button (top right, looks like an arrow pointing down) or copy the raw content.
-
-Save the file as `SKILL.md` on your computer.
-
----
-
-## Step 3: Set up the skill folder
-
-Claude Code looks for skills in a specific location. Create the folder structure like this:
-
-**For the VA-light skill:**
-
-The VA-light skill is installed via Claude.ai, not Claude Code. Go to:
-
-Settings > Profile > Skills > Upload file
-
-Upload your filled-in `SKILL.md` and you are done.
-
-**For the Website Builder skill:**
-
-Create a new folder for your website project. Then inside that folder, create this structure:
-
-```
-my-website/
-└── .claude/
-    └── skills/
-        └── website-builder/
-            └── SKILL.md
-```
-
-Place your filled-in `SKILL.md` in that location.
-
----
-
-## Step 4: Fill in your details
-
-Open the `SKILL.md` file in any text editor (Notepad, TextEdit, or VS Code).
+Open the file in any text editor (Notepad on Windows, TextEdit on Mac, or any other editor).
 
 Replace everything between [ ] with your own information. For example:
 
@@ -89,14 +32,98 @@ Replace everything between [ ] with your own information. For example:
 becomes:
 
 ```
-- **Name:** Michael Doomen
+- **Name:** Sarah Johnson
 ```
 
 Do this for every field. Save the file when done.
 
+**Step 3: Install in Claude.ai**
+
+1. Go to [claude.ai](https://claude.ai) and sign in
+2. Click your profile icon and go to Settings
+3. Navigate to Customize > Skills
+4. Click the + button or Upload a skill
+5. Select your filled-in SKILL.md file
+6. Toggle the skill on
+
+**Step 3 (alternative): Install in Claude Desktop**
+
+1. Open the Claude Desktop application
+2. Go to Settings
+3. Navigate to Capabilities or Customize > Skills (depends on your plan)
+4. Click the + button or Upload a skill
+5. Select your filled-in SKILL.md file
+6. Toggle the skill on
+
+**Step 4: Start using it**
+
+From now on, Claude picks up the skill automatically when relevant. Just type what you need in plain language:
+
+- "Write an email to a client about a delayed delivery"
+- "Summarize these meeting notes"
+- "Help me write a LinkedIn post about this topic"
+
+No extra instructions needed.
+
 ---
 
-## Step 5: Run Claude Code
+## Option B: Claude Code (Website Builder)
+
+This option requires Claude Code and a terminal. It is intended for people who are comfortable with a command line.
+
+**What you need:**
+
+- A Claude Pro or Max subscription at [claude.ai](https://claude.ai)
+- A computer with a terminal (Mac, Windows, or Linux)
+- Node.js version 18 or higher
+
+Not sure if you have Node.js? Open your terminal and type:
+
+```
+node --version
+```
+
+If you see a version number, you are good. If not, download Node.js at [nodejs.org](https://nodejs.org) and install it first.
+
+**Step 1: Install Claude Code**
+
+Open your terminal and run:
+
+```
+npm install -g @anthropic-ai/claude-code
+```
+
+Then log in:
+
+```
+claude login
+```
+
+This opens a browser window. Sign in with the same account you use on claude.ai.
+
+**Step 2: Download the skill**
+
+Go to the [Website Builder skill file](website-builder/SKILL.md) in this repository and download it.
+
+**Step 3: Fill in your details**
+
+Open the SKILL.md file in any text editor and replace all fields between [ ] with your own information. Save the file when done.
+
+**Step 4: Set up the skill folder**
+
+Create a new folder for your website project. Inside that folder, create this structure:
+
+```
+my-website/
+└── .claude/
+    └── skills/
+        └── website-builder/
+            └── SKILL.md
+```
+
+Place your filled-in SKILL.md in that location.
+
+**Step 5: Run Claude Code**
 
 Open your terminal. Navigate to your project folder:
 
@@ -104,29 +131,25 @@ Open your terminal. Navigate to your project folder:
 cd path/to/my-website
 ```
 
-Then start Claude Code:
+Start Claude Code:
 
 ```
 claude
 ```
 
-Type your request in plain language. For the Website Builder, something like:
+Then type:
 
 ```
 Build my website based on the configuration in the skill.
 ```
 
-Claude Code reads your skill automatically and gets to work.
+Claude Code reads your skill automatically and starts building.
 
----
+**What to expect:**
 
-## What to expect
+The Website Builder runs four agents across three phases. A complete website typically takes 15 to 30 minutes depending on the number of pages and your subscription level. Do not close the terminal while it is running.
 
-For the Website Builder: Claude Code will run four agents in sequence. This takes time. A complete website typically takes 15 to 30 minutes depending on the number of pages and your subscription level.
-
-Do not close the terminal while it is running.
-
-When it is done, you will find a complete Next.js project in your folder. Follow the instructions in `DEPLOY.md` inside that folder to put it online.
+When done, you will find a complete Next.js project in your folder. Follow the instructions in the DEPLOY.md file inside that folder to put it online.
 
 ---
 
