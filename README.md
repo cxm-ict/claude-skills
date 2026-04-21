@@ -85,7 +85,7 @@ Follow along or check back for updates. Found something missing? Open an issue.
 
 ## License
 
-MIT, free to use, share, and adapt. Credit appreciated but not required.
+CC BY-NC-SA 4.0 — free to use and adapt for non-commercial purposes. Attribution required. Commercial use is not permitted without written permission. Contact: michael@cxm-ict.com
 
 ---
 
