@@ -21,7 +21,7 @@ Claude acts as a lightweight personal assistant for your daily professional task
 
 Handles: email writing, summarizing, meeting prep, meeting debrief, feedback, LinkedIn posts, task prioritization, and client communication.
 
-Works in: Claude.ai
+Works in: Claude.ai and Claude Desktop
 
 👉 [Download VA-light](va-light/SKILL.md)
 
@@ -42,19 +42,36 @@ Requires: Claude Code and a Pro or Max subscription.
 
 ---
 
+### Code Modernizer
+Analyzes a legacy codebase and modernizes it using current best practices.
+
+Phase 1 produces a full analysis report: code health, security findings, dead code, outdated dependencies, license flags, breaking changes, and a recommendation. Phase 2 builds a modernized copy only after explicit approval.
+
+The original code is never modified.
+
+Supports: JavaScript, TypeScript, Python, PHP, Java, HTML and CSS.
+
+Requires: Claude Code and a Pro or Max subscription.
+
+👉 [Download Code Modernizer](code-modernizer/SKILL.md)
+
+---
+
 ## How to install a skill
 
-**For VA-light (Claude.ai):**
+**For VA-light (Claude.ai or Claude Desktop):**
 1. Download the SKILL.md file
 2. Open it and replace the fields between [ ] with your own details
-3. Go to Claude.ai > Settings > Skills
-4. Upload the file
+3. Go to Settings > Customize > Skills
+4. Upload the file and toggle it on
 
-**For Website Builder (Claude Code):**
+**For Website Builder and Code Modernizer (Claude Code):**
 1. Download the SKILL.md file
 2. Open it and replace the fields between [ ] with your own details
-3. Place the file in your project folder under `.claude/skills/website-builder/SKILL.md`
+3. Place the file at `.claude/skills/[skill-name]/SKILL.md` in your project folder
 4. Run Claude Code in your project folder
+
+For full installation instructions, see [GETTING-STARTED.md](GETTING-STARTED.md).
 
 ---
 
@@ -62,7 +79,7 @@ Requires: Claude Code and a Pro or Max subscription.
 
 This repository is updated regularly with new skills for professionals.
 
-Follow along or check back for updates.
+Follow along or check back for updates. Found something missing? Open an issue.
 
 ---
 
