@@ -57,6 +57,21 @@ Requires: Claude Code and a Pro or Max subscription.
 
 ---
 
+### n8n Workflow Builder
+Turns any process description into a production-ready n8n workflow.
+
+Accepts: plain text, business plans, process diagrams, whiteboard photos, or existing n8n JSON. Always analyzes first, builds only after explicit approval.
+
+Output: importable n8n JSON, Mermaid diagram, and Markdown documentation.
+
+Built on 15+ years of real-world automation experience. Covers 25 common n8n mistakes actively, including idempotency, webhook security, pagination, GDPR, error handling, compensating actions, and versioning.
+
+Works in: Claude.ai and Claude Code
+
+👉 [Download n8n Workflow Builder](n8n-workflow-builder/SKILL.md)
+
+---
+
 ## How to install a skill
 
 **For VA-light (Claude.ai or Claude Desktop):**
@@ -65,7 +80,7 @@ Requires: Claude Code and a Pro or Max subscription.
 3. Go to Settings > Customize > Skills
 4. Upload the file and toggle it on
 
-**For Website Builder and Code Modernizer (Claude Code):**
+**For Website Builder, Code Modernizer, and n8n Workflow Builder (Claude Code or Claude.ai):**
 1. Download the SKILL.md file
 2. Open it and replace the fields between [ ] with your own details
 3. Place the file at `.claude/skills/[skill-name]/SKILL.md` in your project folder
@@ -85,7 +100,9 @@ Follow along or check back for updates. Found something missing? Open an issue.
 
 ## License
 
-CC BY-NC-SA 4.0 — free to use and adapt for non-commercial purposes. Attribution required. Commercial use is not permitted without written permission. Contact: michael@cxm-ict.com
+CC BY-NC-SA 4.0, free to use and adapt for non-commercial purposes. Attribution required. Commercial use is not permitted without written permission.
+
+Contact: michael@cxm-ict.com
 
 ---
 
