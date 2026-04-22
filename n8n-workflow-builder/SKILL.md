@@ -1,15 +1,15 @@
 ---
 name: n8n-workflow-builder
-description: Builds production-ready n8n workflows from any 
-input: plain text descriptions, business plans, process diagrams, whiteboard photos, or existing n8n JSON. Use this skill whenever the user wants to automate something in n8n, describes a process they want to automate, shares a workflow they want to improve, or uploads a document or image describing a business process. Always run the full analysis phase first and wait for explicit user approval before generating any output.
+description: Builds production-ready n8n workflows from any input
+input: plain text descriptions, business plans, process diagrams, whiteboard photos, or existing n8n JSON. Also use this skill whenever the user pastes an n8n execution log, error message, or describes a workflow that is not working correctly (this triggers the debug loop). Use whenever the user wants to automate something in n8n, describes a process they want to automate, shares a workflow they want to improve, uploads a document or image describing a business process, or needs help fixing a broken workflow. Always run the full analysis phase first and wait for explicit user approval before generating any output.
 ---
 
 # n8n Workflow Builder
 
 A skill that turns any process description into a production-ready n8n workflow.
 
-**Input:** Plain text, business plan, process diagram, whiteboard photo, or existing n8n JSON.
-**Output:** n8n JSON (importable), Mermaid diagram, Markdown documentation.
+**Input:** Plain text, business plan, process diagram, whiteboard photo, existing n8n JSON, or n8n execution log.
+**Output:** n8n JSON (importable), Mermaid diagram, Markdown documentation, test scenarios, and debug fixes.
 
 ---
 
@@ -420,6 +420,118 @@ Rules:
 [Version history]
 ```
 
+### Output 4: Test scenarios
+
+Generate three concrete test scenarios immediately after delivering the workflow. These are ready to use in n8n via the "Test with data" function or by sending a manual trigger.
+
+**Scenario 1: Happy path**
+The ideal execution. All fields present, all conditions met, all external services respond correctly.
+- Input data: complete JSON example with realistic values for every expected field
+- Expected behavior: step-by-step what should happen
+- Expected output: what the final result looks like
+
+**Scenario 2: Error path**
+A realistic failure. Missing field, external service down, authentication failure, or invalid data.
+- Input data: JSON example that triggers the error condition
+- Expected behavior: where the workflow should stop and what the error notification should contain
+- Expected output: what the Error Trigger captures and sends
+
+**Scenario 3: Edge case**
+A valid but unusual input that could expose unexpected behavior. Empty arrays, maximum field lengths, special characters, duplicate triggers, or zero-value numbers.
+- Input data: JSON example with the edge case value
+- Expected behavior: how the workflow should handle it
+- Expected output: the result or the graceful failure
+
+Format each scenario as a code block with the input JSON so the user can copy and paste it directly into n8n.
+
+---
+
+## Phase 3: Debug loop
+
+This phase activates when the user pastes an n8n execution log, an error message, or describes a workflow that is not behaving as expected.
+
+No analysis phase needed. Go directly to diagnosis.
+
+### Step 1: Identify the input type
+
+**Execution log**
+The user has pasted the full or partial execution log from n8n (found via Executions in the n8n sidebar).
+
+**Error message**
+The user has pasted a specific error message from a node, a webhook response, or the n8n interface.
+
+**Behavioral description**
+The user describes what is happening vs what should happen. No log available.
+
+### Step 2: Diagnose the problem
+
+Read the log or error carefully. Identify:
+
+- Which node failed (node name and node type)
+- At what point in the execution the failure occurred
+- What the exact error message says
+- What data was flowing into the failing node
+- What the node was trying to do
+
+Cross-reference against the common mistakes list. Most n8n errors fall into one of these categories:
+
+**Authentication errors**
+- Expired OAuth token
+- Wrong credential selected
+- Missing or incorrect API key
+- Webhook header missing or incorrect value
+
+**Data errors**
+- Expected field is null or undefined
+- Wrong data type (string where number expected)
+- Array where single item expected or vice versa
+- Timestamp in wrong format or timezone
+
+**Configuration errors**
+- Wrong operator in IF node
+- Merge node in wrong mode
+- HTTP Request method wrong (GET vs POST)
+- Missing required parameter in node configuration
+- Pagination not configured on a response that returns multiple pages
+
+**Execution errors**
+- Timeout (workflow exceeded 120 seconds)
+- Memory limit hit (large binary file or massive dataset)
+- Sub-workflow not found or returned no data
+- Rate limit hit on external API
+
+**Logic errors**
+- Split Out without Aggregate causing unexpected item count
+- Condition never true due to wrong field reference
+- Variable referenced before it is set
+
+### Step 3: Deliver the fix
+
+Structure the response as follows:
+
+**Diagnosis**
+One clear sentence: what went wrong and why.
+
+**Root cause**
+Explain in plain language what caused the error. No jargon. If the cause is unclear from the log alone, say so and ask for additional context.
+
+**Fix**
+Provide the exact corrected configuration for the failing node. If the fix requires a JSON change, provide the corrected node JSON as a code block that can be copy-pasted directly.
+
+If the fix requires multiple nodes to change, list each one separately with its corrected configuration.
+
+**Prevention**
+One sentence on how to prevent this error in the future.
+
+**Verify**
+Tell the user exactly how to confirm the fix worked: what to check in the execution log after the next run, what the successful output should look like.
+
+### Step 4: Iterate
+
+After delivering the fix, ask: "Did that resolve it? If not, paste the new execution log and I will take another look."
+
+Continue the loop until the workflow runs without errors.
+
 ---
 
 ## Quality checks before delivering
@@ -447,11 +559,16 @@ Before presenting any output, verify every item on this list:
 - All decision points are diamonds
 - Error paths are visible
 
-**Documentation**
-- All sections are filled in
-- Test data examples cover happy path, error path, and at least one edge case
-- Assumptions section lists every undocumented decision
-- Maintenance notes include token expiry and rate limit considerations
+**Test scenarios**
+- Happy path scenario has complete realistic input JSON
+- Error path scenario triggers a real failure condition
+- Edge case scenario covers a non-obvious but valid input
+- All three scenarios have expected behavior and expected output described
+
+**Debug loop**
+- Diagnosis is one clear sentence
+- Fix includes exact node configuration as copy-pasteable JSON
+- Verify step tells the user exactly what to check after the fix
 
 ---
 
@@ -466,6 +583,7 @@ Before presenting any output, verify every item on this list:
 - It does not handle database schema migrations
 - It does not manage n8n infrastructure or hosting
 - It does not proceed without answers to the four mandatory questions
+- It does not guarantee debug fixes without seeing the actual execution log
 
 ---
 
