@@ -2,7 +2,7 @@
 
 Free, ready-to-use skills for Claude, built for daily professional use.
 
-No prompt engineering. No technical knowledge required. Download a skill, fill in your details, and Claude works the way you work.
+No prompt engineering. No technical knowledge required. Download a skill, install it, and Claude works the way you work.
 
 ---
 
@@ -15,6 +15,21 @@ Think of it as onboarding a new colleague. You explain how things work once. Aft
 ---
 
 ## Available skills
+
+### Meeting-to-action: From notes to structured report
+Turns raw meeting input into a clean, structured report ready to send.
+
+Accepts: typed notes, voice memo transcripts, PDFs from a Remarkable tablet, or photos of handwritten notes from any source (notebook, whiteboard, tablet, phone).
+
+Output: PDF, Word document (DOCX), or Markdown. Includes summary, decisions, action points with owner and deadline, open questions, next meeting, references, and approval section.
+
+Works for both attendees and absentees. Asks only what is missing from your input.
+
+Works in: Claude.ai and Claude Desktop
+
+👉 [Download Meeting-to-action](meeting-to-action/SKILL.md)
+
+---
 
 ### VA-light: Personal Assistant
 Claude acts as a lightweight personal assistant for your daily professional tasks.
@@ -74,15 +89,15 @@ Works in: Claude.ai and Claude Code
 
 ## How to install a skill
 
-**For VA-light (Claude.ai or Claude Desktop):**
+**For Meeting-to-action and VA-light (Claude.ai or Claude Desktop):**
 1. Download the SKILL.md file
-2. Open it and replace the fields between [ ] with your own details
-3. Go to Settings > Customize > Skills
-4. Upload the file and toggle it on
+2. Go to Settings > Customize > Skills
+3. Click the + button and upload the file
+4. Toggle it on
 
 **For Website Builder, Code Modernizer, and n8n Workflow Builder (Claude Code or Claude.ai):**
 1. Download the SKILL.md file
-2. Open it and replace the fields between [ ] with your own details
+2. Open it and replace the fields between [ ] with your own details if needed
 3. Place the file at `.claude/skills/[skill-name]/SKILL.md` in your project folder
 4. Run Claude Code in your project folder
 
