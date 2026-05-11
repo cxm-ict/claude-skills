@@ -1,5 +1,55 @@
 # Changelog
 
+## Meeting-to-action
+
+### v1: May 2026
+
+Initial release.
+
+**Input types supported:**
+- Typed notes or transcripts
+- Voice memo transcripts
+- Descriptions of what was discussed
+- PDF exports from a Remarkable tablet
+- Photos of handwritten notes from any source (notebook, whiteboard, tablet, phone)
+
+**Phase 1 reads the input:**
+- Automatic detection of input type
+- Transcription of handwritten notes with [?] flags for illegible parts
+- Confirmation step before report generation for handwritten input
+
+**Phase 2 asks clarifying questions:**
+- Always asks language (Dutch or English) and output format (PDF, DOCX, MD)
+- Asks only what is missing from the input
+- Optional questions for confidentiality, approval, references, and next meeting
+
+**Phase 3 builds the report:**
+- Self-explanatory summary for both attendees and absentees
+- Decisions section with only confirmed outcomes
+- Action points in a table with owner and deadline
+- Open questions for unresolved items
+- Next meeting section
+- References section
+- Approval section for organizations with formal sign-off
+- Confidentiality notice when applicable
+- Version number and date
+
+**Output formats:**
+- Markdown (MD)
+- Word document (DOCX) with proper table formatting
+- PDF
+
+**Rules:**
+- Action points must be concrete with named owner and deadline
+- Decisions must be final
+- Never invent information, mark gaps with [?]
+- No em-dashes
+- Tone is direct and professional
+
+**License:** CC BY-NC-SA 4.0
+
+---
+
 ## n8n Workflow Builder
 
 ### v1: April 2026
@@ -83,6 +133,11 @@ Initial release. Personal assistant mode for daily professional tasks.
 ---
 
 ## Repository
+
+### May 2026
+
+- Added Meeting-to-action skill to the repository
+- README updated with installation steps for Claude.ai skills
 
 ### April 2026
 
