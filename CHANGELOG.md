@@ -1,5 +1,40 @@
 # Changelog
 
+## Prompt-architect
+
+### v1: June 2026
+
+Initial release. The heavy, four-phase prompt builder for professional and reusable work.
+
+- Deep, domain-specific interview using references/domeinen.md
+- Professional build techniques from references/technieken.md: role, examples, structure, success criteria, variables
+- Mandatory quality loop: the prompt is test-run against real output, critiqued, and iterated
+- Delivers a reusable template with clearly marked variables
+- Points to promptmaker when a quick, single-use prompt is enough
+- No em-dashes
+
+**License:** CC BY-NC-SA 4.0
+
+---
+
+## Promptmaker
+
+### v1: June 2026
+
+Initial release. Quick, single-use prompt builder.
+
+- Four building blocks: context, goal, constraints, example
+- Adaptive interview: asks only what is missing, never more than four questions in one turn
+- Skips the interview when the request is already complete, states assumptions instead
+- Delivers the prompt in a copyable block, in the language of the use case
+- Short why-it-works explanation after each prompt
+- Points to prompt-architect for reusable, tested, domain-specific prompts
+- No em-dashes
+
+**License:** CC BY-NC-SA 4.0
+
+---
+
 ## Meeting-to-action
 
 ### v1: May 2026
@@ -133,6 +168,10 @@ Initial release. Personal assistant mode for daily professional tasks.
 ---
 
 ## Repository
+
+### June 2026
+
+- Added Promptmaker and Prompt-architect skills to the repository
 
 ### May 2026
 

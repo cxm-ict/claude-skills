@@ -1,0 +1,9 @@
+# Lokale Claude Code-configuratie (niet meepushen naar publieke repo)
+.claude/
+
+# macOS
+.DS_Store
+
+# Editor / OS
+*.swp
+Thumbs.db

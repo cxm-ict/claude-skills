@@ -87,15 +87,43 @@ Works in: Claude.ai and Claude Code
 
 ---
 
+### Promptmaker: From vague question to ready-to-use prompt
+A quick interviewer that turns a vague or half-formed request into one sharp, copy-paste-ready prompt.
+
+Works from four building blocks: context, goal, constraints, and example. Asks only what is missing, never more than four questions, bundled in one turn. If your request is already complete, it skips the interview and builds straight away.
+
+Output: the finished prompt in a separate copyable block, in the language of the use case, plus a short explanation of why it works.
+
+Works in: Claude.ai and Claude Desktop
+
+👉 [Download Promptmaker](promptmaker/SKILL.md)
+
+---
+
+### Prompt-architect: Reusable, tested prompt assets
+The heavy version of Promptmaker. Builds a prompt asset instead of a one-off: domain-specific, tested against real output, refined, and made reusable with variables.
+
+Runs in four phases and uses two reference files (domains and techniques). Applies professional build techniques: role, examples, structure, and success criteria. The quality loop is mandatory, an untested prompt is not an asset.
+
+Best for recurring professional work: client communication, cold outreach, content marketing, technical specs, analysis, and customer service.
+
+Output: a reusable template with clearly marked variables.
+
+Works in: Claude Code and Claude.ai
+
+👉 [Download Prompt-architect](prompt-architect/SKILL.md)
+
+---
+
 ## How to install a skill
 
-**For Meeting-to-action and VA-light (Claude.ai or Claude Desktop):**
+**For Meeting-to-action, Promptmaker, and VA-light (Claude.ai or Claude Desktop):**
 1. Download the SKILL.md file
 2. Go to Settings > Customize > Skills
 3. Click the + button and upload the file
 4. Toggle it on
 
-**For Website Builder, Code Modernizer, and n8n Workflow Builder (Claude Code or Claude.ai):**
+**For Website Builder, Code Modernizer, n8n Workflow Builder, and Prompt-architect (Claude Code or Claude.ai):**
 1. Download the SKILL.md file
 2. Open it and replace the fields between [ ] with your own details if needed
 3. Place the file at `.claude/skills/[skill-name]/SKILL.md` in your project folder
