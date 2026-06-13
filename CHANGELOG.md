@@ -6,8 +6,8 @@
 
 Initial release. The heavy, four-phase prompt builder for professional and reusable work.
 
-- Deep, domain-specific interview using references/domeinen.md
-- Professional build techniques from references/technieken.md: role, examples, structure, success criteria, variables
+- Deep, domain-specific interview using references/domains.md
+- Professional build techniques from references/techniques.md: role, examples, structure, success criteria, variables
 - Mandatory quality loop: the prompt is test-run against real output, critiqued, and iterated
 - Delivers a reusable template with clearly marked variables
 - Points to promptmaker when a quick, single-use prompt is enough
@@ -172,6 +172,7 @@ Initial release. Personal assistant mode for daily professional tasks.
 ### June 2026
 
 - Added Promptmaker and Prompt-architect skills to the repository
+- Both skills written in English to match the rest of the repository; reference files renamed to domains.md and techniques.md
 
 ### May 2026
 

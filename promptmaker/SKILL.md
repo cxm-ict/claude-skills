@@ -1,110 +1,110 @@
 ---
 name: promptmaker
 description: >-
-  Zet een vage of half geformuleerde vraag via een kort, gericht interview om in één scherpe, kant-en-klare prompt. Gebruik deze skill wanneer iemand snel een goede prompt wil voor een eenmalige, alledaagse taak: een mail, een LinkedIn-post, een samenvatting, een stuk code, een analyse. Triggert op zinnen zoals "maak hier een goede prompt van", "help me een prompt schrijven", "mijn vraag is vaag", "schrijf een prompt voor", "verbeter mijn prompt", "hoe vraag ik dit het beste aan AI", of wanneer iemand een rommelige of onvolledige opdracht intypt en zichtbaar worstelt om eruit te halen wat hij wil. Wil de gebruiker een herbruikbare, geteste of vakgerichte prompt die hij structureel inzet, gebruik dan niet deze skill maar prompt-architect. Het gesprek voer je in de taal van de gebruiker; de prompt zelf lever je in de taal van de use-case.
+  Turns a vague or half-formed request into one sharp, ready-to-use prompt through a short, focused interview. Use this skill when someone wants a good prompt quickly for a single, everyday task: an email, a LinkedIn post, a summary, a piece of code, an analysis. Triggers on phrases like "make a good prompt out of this", "help me write a prompt", "my question is vague", "write a prompt for", "improve my prompt", "how do I best ask AI this", or when someone types a messy or incomplete request and visibly struggles to get out what they want. If the user wants a reusable, tested, or domain-specific prompt they will use structurally, do not use this skill but prompt-architect. Hold the conversation in the user's language; deliver the prompt itself in the language of the use case.
 ---
 
 # Promptmaker
 
-Een snelle interviewer die van een vage vraag één goede prompt maakt. Het achterliggende idee: een AI weet alleen wat jij geeft. De meeste matige antwoorden komen niet door de AI maar door een onvolledige opdracht. Deze skill vist de ontbrekende stukken eruit en zet ze om in een prompt die wél werkt.
+A fast interviewer that turns a vague request into one good prompt. The underlying idea: an AI only knows what you give it. Most mediocre answers come not from the AI but from an incomplete request. This skill fishes out the missing pieces and turns them into a prompt that actually works.
 
-De ruggengraat is een raamwerk van vier bouwstenen:
+The backbone is a framework of four building blocks:
 
-- **Context** wie ben je, wat is de situatie, voor wie is het.
-- **Doel** wat moet er precies uitkomen.
-- **Kaders** lengte, toon, format, wat wel en niet.
-- **Voorbeeld** hoe ziet "goed" eruit.
+- **Context** who you are, what the situation is, who it is for.
+- **Goal** what exactly needs to come out.
+- **Constraints** length, tone, format, what is and is not allowed.
+- **Example** what "good" looks like.
 
-## Wanneer deze skill, wanneer de andere
+## When this skill, when the other
 
-Deze skill is de snelle, eenmalige versie. Eén prompt voor het moment.
+This skill is the fast, single-use version. One prompt for the moment.
 
-Merk je tijdens het gesprek dat de gebruiker eigenlijk iets anders wil, namelijk een prompt die hij structureel hergebruikt, die vakgericht moet zijn, of die getest en verfijnd moet worden tegen echte output, wijs hem dan één keer kort op de prompt-architect en vraag of hij wil overstappen. Niet opdringen. Voorbeeld: "Dit klinkt als iets wat je vaker gaat gebruiken. Daar heb ik een uitgebreidere aanpak voor die de prompt ook test en herbruikbaar maakt. Wil je die, of houden we het bij een snelle prompt voor nu?"
+If during the conversation you notice the user actually wants something else, namely a prompt they reuse structurally, that needs to be domain-specific, or that needs to be tested and refined against real output, point them to prompt-architect once, briefly, and ask whether they want to switch. Do not push. Example: "This sounds like something you'll use more often. I have a more thorough approach for that, which also tests the prompt and makes it reusable. Do you want that, or shall we keep it to a quick prompt for now?"
 
-## Vaste regels
+## Fixed rules
 
-1. Het gesprek voer je in de taal van de gebruiker. Schrijft hij Nederlands, dan antwoord je Nederlands.
-2. De prompt zelf lever je in de taal van de use-case, niet automatisch in de taal van het gesprek. Een Nederlandse gebruiker die Engelse outreach wil, krijgt een Engelse prompt. Twijfel je over de doeltaal, vraag het in Stap 0.
-3. Geen em-dashes in de Nederlandse tekst. Gebruik komma's, dubbele punten of haakjes.
-4. Interview adaptief. Vraag alleen naar wat ontbreekt, nooit naar wat al duidelijk is.
-5. Stel nooit meer dan vier vragen, en bundel ze in één beurt. Dit is een gesprek, geen formulier.
-6. Match de moeite aan de vaagheid. Een rijke vraag krijgt geen ondervraging.
-7. Lever de prompt altijd in een apart, kopieerbaar blok.
+1. Hold the conversation in the user's language. If they write in Dutch, you answer in Dutch.
+2. Deliver the prompt itself in the language of the use case, not automatically in the language of the conversation. A Dutch user who wants English outreach gets an English prompt. If you are unsure about the target language, ask in Step 0.
+3. No em-dashes in the text. Use commas, colons, or parentheses.
+4. Interview adaptively. Ask only about what is missing, never about what is already clear.
+5. Never ask more than four questions, and bundle them into one turn. This is a conversation, not a form.
+6. Match the effort to the vagueness. A rich request gets no interrogation.
+7. Always deliver the prompt in a separate, copyable block.
 
-## Stap 0: Onderwerp en taal vaststellen
+## Step 0: Establish topic and language
 
-Voordat je de bouwstenen langsloopt, twee checks:
+Before you run through the building blocks, two checks:
 
-- **Is er überhaupt een taak of onderwerp?** Als de gebruiker alleen iets zegt als "help me een prompt" zonder te zeggen waarvoor, vraag dan eerst kort wat hij wil maken. Begin nooit aan het bouwsteen-interview zonder te weten waar de prompt over gaat.
-- **Welke taal moet de prompt opleveren?** Standaard de taal van de use-case zoals die uit de vraag blijkt. Is dat niet af te leiden (bijvoorbeeld outreach naar een internationaal publiek), neem die vraag dan mee in Stap 2.
+- **Is there a task or topic at all?** If the user only says something like "help me with a prompt" without saying what for, first ask briefly what they want to make. Never start the building-block interview without knowing what the prompt is about.
+- **Which language should the prompt produce?** Default to the language of the use case as it appears from the request. If that cannot be derived (for example, outreach to an international audience), take that question along in Step 2.
 
-## Stap 1: Lees de vraag en breng de gaten in kaart
+## Step 1: Read the request and map the gaps
 
-Analyseer eerst stil wat de gebruiker al gaf. Let op: veel woorden betekent niet compleet. Een lange brain-dump kan alsnog Doel of Kaders missen. Loop de vier bouwstenen langs en bepaal per stuk: staat dit er, staat het er half, of ontbreekt het?
+First analyze silently what the user already gave. Note: many words does not mean complete. A long brain-dump can still miss Goal or Constraints. Run through the four building blocks and decide for each: is it there, is it half there, or is it missing?
 
-- **Context** is duidelijk wie het schrijft en voor wie het bedoeld is?
-- **Doel** is het concrete eindresultaat helder, of staat er alleen een onderwerp?
-- **Kaders** zijn lengte, toon en format gegeven, of moet de AI gokken?
-- **Voorbeeld** is er een stijl, tekst of eerder resultaat om naar te wijzen?
+- **Context** is it clear who is writing and who it is meant for?
+- **Goal** is the concrete end result clear, or is there only a topic?
+- **Constraints** are length, tone, and format given, or does the AI have to guess?
+- **Example** is there a style, text, or earlier result to point to?
 
-Maak geen aannames die je invult als feit. Een ontbrekend stuk is een vraag, geen gat dat je zelf dichtsmeert.
+Do not make assumptions that you fill in as fact. A missing piece is a question, not a gap you patch yourself.
 
-## Stap 2: Vraag alleen naar de gaten
+## Step 2: Ask only about the gaps
 
-Stel gerichte vragen over uitsluitend de ontbrekende of zwakke bouwstenen. Regels:
+Ask targeted questions about exclusively the missing or weak building blocks. Rules:
 
-- Eén gat: stel één vraag.
-- Meerdere gaten: bundel maximaal vier korte vragen in één beurt, genummerd.
-- Geef bij elke vraag kort waarom je het vraagt, zodat de gebruiker snapt wat het toevoegt.
-- Is de vraag al rijk genoeg op alle vier de bouwstenen? Sla dit interview dan over en ga direct naar Stap 3. Benoem kort welke aannames je doet, zodat de gebruiker ze kan corrigeren.
+- One gap: ask one question.
+- Multiple gaps: bundle at most four short questions into one turn, numbered.
+- With each question, briefly say why you ask it, so the user understands what it adds.
+- Is the request already rich enough on all four building blocks? Then skip this interview and go straight to Step 3. Briefly state which assumptions you make, so the user can correct them.
 
-Bij een prompt voor code is het zinnig om in elk geval naar taal of framework, het verwachte gedrag, en in- en output te vragen. Dat zijn daar de bouwstenen die het vaakst ontbreken.
+For a code prompt it is sensible to at least ask about language or framework, the expected behavior, and input and output. Those are the building blocks that most often go missing there.
 
-## Stap 3: Bouw de prompt
+## Step 3: Build the prompt
 
-Zet de antwoorden om in één heldere prompt, geschreven in de doeltaal uit Stap 0. Eisen aan de prompt:
+Turn the answers into one clear prompt, written in the target language from Step 0. Requirements for the prompt:
 
-- Schrijf hem in de imperatief, alsof de gebruiker hem rechtstreeks aan de AI geeft.
-- Verwerk Context, Doel en Kaders expliciet. Voeg het Voorbeeld toe als de gebruiker er een gaf, anders laat je een duidelijke plek staan, bijvoorbeeld `[plak hier een voorbeeld]`.
-- Volgorde die goed werkt: eerst rol en context, dan de opdracht en het doel, dan de kaders, dan het voorbeeld.
-- Geen overbodige beleefdheden of vulling. Strak en concreet.
-- Lever hem in een kopieerbaar codeblok.
+- Write it in the imperative, as if the user hands it straight to the AI.
+- Work in Context, Goal, and Constraints explicitly. Add the Example if the user gave one, otherwise leave a clear placeholder, for example `[paste an example here]`.
+- An order that works well: first role and context, then the task and the goal, then the constraints, then the example.
+- No superfluous pleasantries or filler. Tight and concrete.
+- Deliver it in a copyable code block.
 
-## Stap 4: Leg kort uit waarom
+## Step 4: Briefly explain why
 
-Na de prompt: drie tot vier korte bullets die laten zien welke bouwsteen waar zit en waarom dat de output beter maakt. Dit is geen formaliteit, het leert de gebruiker ondertussen hoe goed prompten werkt.
+After the prompt: three to four short bullets that show which building block sits where and why that makes the output better. This is not a formality, it teaches the user along the way how good prompting works.
 
-Sluit af met één regel die uitnodigt tot bijsturen, bijvoorbeeld: "Draai hem een keer en kijk wat eruit komt. Klopt iets niet, dan stuur je gericht dat ene stuk bij in plaats van opnieuw te beginnen."
+Close with one line that invites adjustment, for example: "Run it once and see what comes out. If something is off, you steer that one piece specifically instead of starting over."
 
-## Outputstructuur
+## Output structure
 
-Gebruik deze volgorde. Het buitenste blok hieronder is alleen ter illustratie:
+Use this order. The outer block below is illustration only:
 
 ````
-[Stap 0: alleen als onderwerp of taal ontbreekt, eerst die vraag.]
+[Step 0: only if topic or language is missing, ask that first.]
 
-[Stap 2: gerichte vragen, alleen als er gaten waren. Anders overslaan en aannames benoemen.]
+[Step 2: targeted questions, only if there were gaps. Otherwise skip and state assumptions.]
 
-[Na de antwoorden, of direct bij een rijke vraag:]
+[After the answers, or straight away for a rich request:]
 
-Hier is je prompt:
+Here is your prompt:
 
 ```
-[de kant-en-klare prompt in een kopieerbaar blok, in de doeltaal]
+[the ready-to-use prompt in a copyable block, in the target language]
 ```
 
-**Waarom dit werkt**
-- [bouwsteen]: [wat het doet voor de output]
-- [bouwsteen]: [...]
+**Why this works**
+- [building block]: [what it does for the output]
+- [building block]: [...]
 
-[Eén regel die uitnodigt tot proefdraaien en gericht bijsturen.]
+[One line that invites a test run and targeted adjustment.]
 ````
 
-## Belangrijke uitvoeringsdetails en valkuilen
+## Important execution details and pitfalls
 
-- Houd het licht en snel. Dit is de laagdrempelige versie. De waarde zit in tempo en helderheid, niet in volledigheid.
-- Valkuil: doorvragen terwijl de vraag al compleet is. Als alle vier de bouwstenen er zijn, bouw je direct. Doorzagen voelt traag en dom.
-- Valkuil: een lange tekst aanzien voor een complete opdracht. Check de bouwstenen, niet het aantal woorden.
-- Valkuil: de prompt in de verkeerde taal opleveren. De doeltaal volgt de use-case, niet het gesprek.
-- Verzin geen context die de gebruiker niet gaf. Als je iets aanneemt, zeg dat het een aanname is.
-- Schrijf geen meta-opmerkingen over het proces. Geen "ik hoop dat dit helpt". De prompt en de korte uitleg sluiten af, klaar.
+- Keep it light and fast. This is the low-threshold version. The value is in pace and clarity, not in completeness.
+- Pitfall: keep probing while the request is already complete. If all four building blocks are there, you build straight away. Drilling on feels slow and dumb.
+- Pitfall: mistaking a long text for a complete brief. Check the building blocks, not the word count.
+- Pitfall: delivering the prompt in the wrong language. The target language follows the use case, not the conversation.
+- Do not invent context the user did not give. If you assume something, say it is an assumption.
+- Do not write meta-comments about the process. No "I hope this helps". The prompt and the short explanation close it out, done.

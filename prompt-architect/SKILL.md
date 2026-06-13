@@ -1,132 +1,132 @@
 ---
 name: prompt-architect
 description: >-
-  De uitgebreide prompt-bouwer voor professioneel werk. Voert een diep, vakgericht interview, bouwt de prompt met professionele technieken (rol, voorbeelden, structuur, succescriteria), test hem proefdraaiend, beoordeelt het resultaat kritisch en itereert, en levert een herbruikbare template met variabelen. Gebruik deze skill wanneer de gebruiker termen gebruikt zoals "ultieme prompt", "herbruikbare prompt", "prompt-template", "een prompt die ik vaker gebruik", "test en verbeter deze prompt", "bouw een promptsysteem", "vakgerichte prompt voor [domein]", of wanneer iemand een prompt structureel inzet in plaats van eenmalig. Geschikt voor zwaarder werk: klantcommunicatie, cold outreach, contentmarketing, technische specs, analyse, klantenservice. Wil de gebruiker maar een snelle, eenmalige prompt, gebruik dan promptmaker. Het gesprek voer je in de taal van de gebruiker; de prompt zelf in de taal van de use-case.
+  The thorough prompt builder for professional work. Runs a deep, domain-specific interview, builds the prompt with professional techniques (role, examples, structure, success criteria), test-runs it, critiques the result, iterates, and delivers a reusable template with variables. Use this skill when the user uses terms like "ultimate prompt", "reusable prompt", "prompt template", "a prompt I use often", "test and improve this prompt", "build a prompt system", "domain-specific prompt for [field]", or when someone uses a prompt structurally rather than once. Suited for heavier work: client communication, cold outreach, content marketing, technical specs, analysis, customer service. If the user only wants a quick, single-use prompt, use promptmaker instead. Hold the conversation in the user's language; deliver the prompt itself in the language of the use case.
 ---
 
 # Prompt-architect
 
-De diepe versie van de promptmaker. Waar de gratis promptmaker één goede prompt voor het moment maakt, levert de prompt-architect een prompt-asset: vakgericht opgebouwd, getest tegen echte output, verbeterd, en herbruikbaar gemaakt met variabelen. Het verschil zit niet in "een betere prompt", maar in een ander soort uitkomst, een systeem dat je honderd keer gebruikt.
+The deep version of promptmaker. Where the free promptmaker makes one good prompt for the moment, prompt-architect delivers a prompt asset: built domain-specific, tested against real output, improved, and made reusable with variables. The difference is not "a better prompt", but a different kind of outcome, a system you use a hundred times.
 
-De skill werkt in vier fases en gebruikt twee naslagbestanden:
+The skill works in four phases and uses two reference files:
 
-- `references/domeinen.md` patronen per vakgebied: wat je extra moet uitvragen en hoe de prompt eruitziet.
-- `references/technieken.md` de professionele bouwtechnieken (rol, voorbeelden, structuur, succescriteria, variabelen).
+- `references/domains.md` patterns per field: what to ask about extra and what the prompt looks like.
+- `references/techniques.md` the professional build techniques (role, examples, structure, success criteria, variables).
 
-Lees het relevante deel van een naslagbestand op het moment dat je het nodig hebt, niet alles vooraf.
+Read the relevant part of a reference file at the moment you need it, not all of it up front.
 
-## Wanneer deze skill, wanneer de andere
+## When this skill, when the other
 
-Deze skill is de zware versie en hoort bij professioneel of herbruikbaar werk. Blijkt tijdens Fase 0 of Fase 1 dat de gebruiker eigenlijk maar een snelle, eenmalige prompt wil en niets hergebruikt of getest hoeft te worden, bied dan aan om over te schakelen naar de lichtere promptmaker in plaats van het volledige protocol over hem heen te storten. Voorbeeld: "Dit is een eenmalige klus. Wil je dat ik er snel een goede prompt van maak, of bouwen we toch het volledige, herbruikbare asset?"
+This skill is the heavy version and belongs to professional or reusable work. If it turns out during Phase 0 or Phase 1 that the user really just wants a quick, single-use prompt and nothing needs to be reused or tested, offer to switch to the lighter promptmaker instead of dumping the full protocol on them. Example: "This is a one-off job. Do you want me to make a quick, good prompt of it, or do we build the full, reusable asset after all?"
 
-## Vaste regels
+## Fixed rules
 
-1. Het gesprek voer je in de taal van de gebruiker.
-2. De prompt-template en alle voorbeeldoutput lever je in de taal van de use-case, niet automatisch in de taal van het gesprek. Stel de doeltaal vast in Fase 0 en vraag het bij twijfel.
-3. Geen em-dashes in de Nederlandse tekst. Gebruik komma's, dubbele punten of haakjes.
-4. Doe de fases op volgorde. Sla niets stilzwijgend over.
-5. Construeer niet op de gok. Als een fase informatie mist, vraag het of benoem de aanname expliciet.
-6. De kwaliteitslus (Fase 3) is niet optioneel. Een ongeteste prompt is geen prompt-asset.
-7. Lever de eindprompt als herbruikbare template met duidelijk gemarkeerde variabelen.
+1. Hold the conversation in the user's language.
+2. Deliver the prompt template and all sample output in the language of the use case, not automatically in the language of the conversation. Establish the target language in Phase 0 and ask if unsure.
+3. No em-dashes in the text. Use commas, colons, or parentheses.
+4. Do the phases in order. Do not silently skip anything.
+5. Do not construct on a guess. If a phase is missing information, ask for it or state the assumption explicitly.
+6. The quality loop (Phase 3) is not optional. An untested prompt is not a prompt asset.
+7. Deliver the final prompt as a reusable template with clearly marked variables.
 
-## Fase 0: Context, vakgebied en taal vaststellen
+## Phase 0: Establish context, field, and language
 
-Bepaal drie dingen:
+Determine three things:
 
-1. **Het vakgebied of de use-case.** Mail, klantcommunicatie, cold outreach, content, technische spec, analyse, klantenservice, iets anders? Lees vervolgens het bijbehorende blok in `references/domeinen.md`. Staat de use-case er niet bij, werk dan met het algemene raamwerk (Context, Doel, Kaders, Voorbeeld) en de technieken uit `references/technieken.md`.
-2. **Herbruikbaarheid.** Is dit een prompt voor één keer of zet de gebruiker hem structureel in? Bij eenmalig gebruik, overweeg de overstap naar promptmaker (zie hierboven). Bij structureel gebruik bouw je later variabelen in.
-3. **De doeltaal van de prompt.** Welke taal moet de uiteindelijke output hebben? Dit hoeft niet de taal van het gesprek te zijn.
+1. **The field or use case.** Email, client communication, cold outreach, content, technical spec, analysis, customer service, something else? Then read the matching block in `references/domains.md`. If the use case is not listed, work with the general framework (Context, Goal, Constraints, Example) and the techniques from `references/techniques.md`.
+2. **Reusability.** Is this a one-time prompt or does the user deploy it structurally? For one-time use, consider the switch to promptmaker (see above). For structural use, you build in variables later.
+3. **The target language of the prompt.** Which language should the final output have? This need not be the language of the conversation.
 
-## Fase 1: Diepte-interview
+## Phase 1: Deep interview
 
-Stel de vragen die het domeinblok voorschrijft, plus deze vaste set waar relevant:
+Ask the questions the domain block prescribes, plus this fixed set where relevant:
 
-- Wie is de afzender en wie de ontvanger, en wat is hun relatie?
-- Wat is het exacte doel, en waaraan zie je achteraf dat het gelukt is? (Dit worden later je succescriteria.)
-- Welke kaders gelden: lengte, toon, format, taal, dingen die juist niet mogen?
-- Zijn er voorbeelden van goede en van slechte output om naar te wijzen?
-- Voor welk model of welke plek is de prompt bedoeld? (Een chatvenster, een geautomatiseerde stap, een document.)
-- Welke variabelen veranderen per keer als de prompt herbruikbaar moet zijn?
+- Who is the sender and who is the recipient, and what is their relationship?
+- What is the exact goal, and how will you tell afterward that it succeeded? (These become your success criteria later.)
+- Which constraints apply: length, tone, format, language, things that specifically must not happen?
+- Are there examples of good and of bad output to point to?
+- For which model or place is the prompt intended? (A chat window, an automated step, a document.)
+- Which variables change each time if the prompt needs to be reusable?
 
-Bundel de vragen verstandig. Vraag niet naar wat de gebruiker al gaf. Stel nooit meer dan zes vragen in één beurt. Is de prompt eenmalig, sla dan de vragen over herbruikbaarheid en variabelen over.
+Bundle the questions sensibly. Do not ask about what the user already gave. Never ask more than six questions in one turn. If the prompt is one-time, skip the questions about reusability and variables.
 
-## Fase 2: Constructie
+## Phase 2: Construction
 
-Bouw de prompt volgens `references/technieken.md`, in de doeltaal uit Fase 0. Verwerk minimaal:
+Build the prompt according to `references/techniques.md`, in the target language from Phase 0. Work in at least:
 
-- **Rolinstructie** geef de AI een heldere rol en expertise die bij de taak past.
-- **Context en doel** expliciet, met de succescriteria erin verwerkt.
-- **Structuur** vraag waar nuttig om een vast outputformaat (kopjes, een lijst, of een schema met tags of JSON als de output verder verwerkt wordt).
-- **Voorbeelden** verwerk minstens één voorbeeld van gewenste output als de gebruiker er een gaf. Bij stijlgevoelig werk is dit de belangrijkste hefboom: bouw het voorbeeld ín de template zodat het elke keer meewerkt.
-- **Kaders en negatieve voorbeelden** lengte, toon, en expliciet wat niet mag.
-- **Variabelen** als de prompt herbruikbaar is, vervang de wisselende stukken door duidelijk gemarkeerde plaatshouders, bijvoorbeeld `{doelgroep}`, `{onderwerp}`, `{lengte}`.
+- **Role instruction** give the AI a clear role and expertise that fits the task.
+- **Context and goal** explicit, with the success criteria worked in.
+- **Structure** where useful, ask for a fixed output format (headings, a list, or a schema with tags or JSON if the output is processed further).
+- **Examples** work in at least one example of desired output if the user gave one. For style-sensitive work this is the most important lever: build the example into the template so it works along every time.
+- **Constraints and negative examples** length, tone, and explicitly what is not allowed.
+- **Variables** if the prompt is reusable, replace the changing pieces with clearly marked placeholders, for example `{audience}`, `{topic}`, `{length}`.
 
-Toon de eerste versie van de prompt aan de gebruiker.
+Show the first version of the prompt to the user.
 
-## Fase 3: Kwaliteitslus
+## Phase 3: Quality loop
 
-Dit is de kern van het verschil. Een prompt is pas af als hij getest is.
+This is the core of the difference. A prompt is only finished once it has been tested.
 
-1. **Proefdraaien.** Draai de prompt zelf en genereer een voorbeeldoutput in de doeltaal. Heeft de gebruiker geen concrete invulling voor de variabelen gegeven, verzin dan zelf één realistische testinvoer en label die duidelijk als "voorbeeldinvoer", zodat de lus niet stilvalt. Laat invoer en output zien.
-2. **Kritisch beoordelen.** Leg de output naast de succescriteria uit Fase 1. Wees streng, in de geest van scherp tegendenken. Drie vragen:
-   - Doet de output precies wat het doel vroeg, of zit er drift in?
-   - Waar is de output zwak, generiek, of mis je iets?
-   - Welke instructie in de prompt veroorzaakte dat, en hoe pas je hem aan?
-3. **Verbeteren.** Pas de prompt gericht aan op basis van wat de proefoutput liet zien. Draai indien nodig nog een keer.
+1. **Test run.** Run the prompt yourself and generate a sample output in the target language. If the user gave no concrete values for the variables, invent one realistic test input yourself and label it clearly as "sample input", so the loop does not stall. Show the input and output.
+2. **Critique strictly.** Lay the output against the success criteria from Phase 1. Be strict, in the spirit of sharp counter-thinking. Three questions:
+   - Does the output do exactly what the goal asked, or is there drift?
+   - Where is the output weak, generic, or missing something?
+   - Which instruction in the prompt caused that, and how do you adjust it?
+3. **Improve.** Adjust the prompt specifically based on what the test output showed. Run it again if needed.
 
-Harde grens: maximaal twee iteraties. Is de prompt na twee rondes nog niet goed, stop dan en wees eerlijk. Lever de beste versie tot dan toe op met een korte notitie over wat nog niet opgelost is en waarom (bijvoorbeeld: de gebruiker moet eerst een echt voorbeeld aanleveren). Blijf niet eindeloos draaien.
+Hard limit: at most two iterations. If the prompt is still not good after two rounds, stop and be honest. Deliver the best version so far with a short note on what is not yet solved and why (for example: the user must first provide a real example). Do not keep looping endlessly.
 
-Betrek de gebruiker: laat de proefoutput en je oordeel zien, en vraag of dit de goede kant op gaat voordat je de definitieve versie oplevert.
+Involve the user: show the test output and your judgment, and ask whether this is heading the right way before you deliver the final version.
 
-## Fase 4: Oplevering
+## Phase 4: Delivery
 
-Lever het volledige asset op:
+Deliver the full asset:
 
-- **De definitieve prompt-template** in een kopieerbaar blok, in de doeltaal, met de variabelen duidelijk gemarkeerd.
-- **Gebruiksaanwijzing** een paar regels: welke variabelen je invult, en waar de prompt voor bedoeld is.
-- **De succescriteria** kort, zodat de gebruiker zelf kan zien of een toekomstige output goed is.
-- **Bibliotheek-notitie** een korte regel met een voorgestelde naam en categorie, zodat de gebruiker de prompt in zijn eigen verzameling kan opslaan en terugvinden.
+- **The final prompt template** in a copyable block, in the target language, with the variables clearly marked.
+- **Usage instructions** a few lines: which variables you fill in, and what the prompt is meant for.
+- **The success criteria** briefly, so the user can tell for themselves whether a future output is good.
+- **Library note** a short line with a suggested name and category, so the user can store the prompt in their own collection and find it back.
 
-## Outputstructuur
+## Output structure
 
-Het buitenste blok hieronder is alleen ter illustratie:
+The outer block below is illustration only:
 
 ````
-## Fase 0 en 1: Wat ik moet weten
-[gerichte vragen, gegroepeerd]
+## Phase 0 and 1: What I need to know
+[targeted questions, grouped]
 
-[Na antwoorden:]
+[After answers:]
 
-## Fase 2: Eerste versie
+## Phase 2: First version
 ```
-[prompt v1 met variabelen, in de doeltaal]
+[prompt v1 with variables, in the target language]
 ```
 
-## Fase 3: Proef en beoordeling
-**Voorbeeldinvoer:** [door gebruiker gegeven, of zelf gemaakt en als zodanig gelabeld]
-**Proefoutput:** [voorbeeldresultaat]
-**Oordeel:** [streng, tegen de succescriteria]
-**Aanpassing:** [wat en waarom]
+## Phase 3: Test and judgment
+**Sample input:** [given by user, or self-made and labeled as such]
+**Test output:** [sample result]
+**Judgment:** [strict, against the success criteria]
+**Adjustment:** [what and why]
 
-[eventueel een tweede iteratie, daarna stoppen]
+[optionally a second iteration, then stop]
 
-## Fase 4: Je prompt-asset
+## Phase 4: Your prompt asset
 ```
-[definitieve herbruikbare template]
+[final reusable template]
 ```
-**Variabelen:** [lijst met wat je invult]
-**Bedoeld voor:** [korte gebruiksaanwijzing]
-**Succescriteria:** [waaraan een goede output voldoet]
-**Voor je bibliotheek:** [voorgestelde naam en categorie]
+**Variables:** [list of what you fill in]
+**Meant for:** [short usage instructions]
+**Success criteria:** [what a good output meets]
+**For your library:** [suggested name and category]
 ````
 
-## Belangrijke uitvoeringsdetails en valkuilen
+## Important execution details and pitfalls
 
-- De diepte zit in Fase 1 en Fase 3. Een diepte-interview zonder kwaliteitslus is een halve prompt-architect.
-- Valkuil: het volledige protocol over een eenmalige klus heen storten. Bied dan promptmaker aan.
-- Valkuil: blijven itereren in Fase 3. Twee rondes is de grens, daarna eerlijk zijn.
-- Valkuil: stilvallen omdat er geen testinvoer is. Maak er zelf een, gelabeld als voorbeeld.
-- Valkuil: de template in de taal van het gesprek leveren in plaats van de doeltaal van de use-case.
-- Pretendeer geen objectiviteit in je oordeel. Het is een strenge tweede lezing, geen meetlat.
-- Verzin geen succescriteria die de gebruiker niet impliceerde. Leid ze af uit het doel en check ze terug.
-- Geen meta-opmerkingen over het proces aan het einde. De opgeleverde template sluit af.
+- The depth is in Phase 1 and Phase 3. A deep interview without a quality loop is half a prompt-architect.
+- Pitfall: dumping the full protocol on a one-time job. Offer promptmaker then.
+- Pitfall: keep iterating in Phase 3. Two rounds is the limit, after that be honest.
+- Pitfall: stalling because there is no test input. Make one yourself, labeled as an example.
+- Pitfall: delivering the template in the language of the conversation instead of the target language of the use case.
+- Do not pretend objectivity in your judgment. It is a strict second reading, not a measuring stick.
+- Do not invent success criteria the user did not imply. Derive them from the goal and check them back.
+- No meta-comments about the process at the end. The delivered template closes it out.
