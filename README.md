@@ -129,6 +129,8 @@ Works in: Claude Code and Claude.ai
 3. Place the file at `.claude/skills/[skill-name]/SKILL.md` in your project folder
 4. Run Claude Code in your project folder
 
+> **Prompt-architect** ships with extra reference files (`references/domeinen.md` and `references/technieken.md`). Download the whole `prompt-architect/` folder, not just `SKILL.md`, and keep the `references/` subfolder next to it so the skill can read them.
+
 For full installation instructions, see [GETTING-STARTED.md](GETTING-STARTED.md).
 
 ---
